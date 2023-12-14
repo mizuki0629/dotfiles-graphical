@@ -20,7 +20,7 @@ dotfiles:
 repos:
 # add config for this repository
   - name: graphical
-    url: 'git@github.com:mizuki0629/dotfiles-graphical.git'
+    url: 'https://github.com/mizuki0629/dotfiles-graphical.git'
     deploy:
       home:
         linux: "${HOME}"
