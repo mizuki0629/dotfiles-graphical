@@ -1,11 +1,15 @@
 # dotfiles-graphical
-dotfiles for unix graphical tools
+dotfiles for unix Graphical Applications
 
 ## install
 The installation can be done in several ways.
 
 ### 1. copy
 copy dotfiles to your home dirctory
+```sh
+copy -r /path/to/repository/home/*    ~/
+copy -r /path/to/repository/.config/* .config/
+```
 
 ### 2. rrcm
 [rrcm](https://github.com/mizuki0629/rrcm) is simple dotfiles management and deploy tool.
@@ -33,4 +37,9 @@ clone and deploy
 rrcm update
 ```
 
-### 3. use other tools
+## Applications
+- qtile (Tilling window manager)
+- picom (Compositor for X)
+- fcitx (IME)
+- kitty (GPU based terminal emulator)
+- rofi  (Application launcher)
