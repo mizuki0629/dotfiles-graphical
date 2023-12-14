@@ -1,0 +1,59 @@
+[tool.pyright]
+strict = ["*"]
+
+[tool.black]
+target-version = ['py38', 'py39', 'py310', 'py311']
+# black ignores everything in .gitignore by default, see
+# https://black.readthedocs.io/en/stable/usage_and_configuration/file_collection_and_discovery.html#gitignore
+# Use `extend-exclude` if you want to exclude something in addition to this.
+
+[tool.ruff]
+line-length = 88
+
+# See https://beta.ruff.rs/docs/rules/#error-e
+# for error codes. The ones we ignore are:
+#  E501: Line too long (black enforces this for us)
+#  E731: do not assign a lambda expression, use a def
+#
+# flake8-bugbear compatible checks. Its error codes are described at
+# https://beta.ruff.rs/docs/rules/#flake8-bugbear-b
+#  B023: Functions defined inside a loop must not use variables redefined in the loop
+ignore = [
+    "B023",
+    "E501",
+    "E731",
+]
+select = [
+    # pycodestyle
+    "E",
+    "W",
+    # pyflakes
+    "F",
+    # flake8-bugbear
+    "B0",
+    # flake8-comprehensions
+    "C4",
+    # flake8-2020
+    "YTT",
+    # flake8-slots
+    "SLOT",
+    # flake8-debugger
+    "T10",
+    # flake8-pie
+    "PIE",
+    # flake8-executable
+    "EXE",
+]
+
+[tool.isort]
+line_length = 88
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "TWISTED", "FIRSTPARTY", "TESTS", "LOCALFOLDER"]
+default_section = "THIRDPARTY"
+known_first_party = ["synapse"]
+known_tests = ["tests"]
+known_twisted = ["twisted", "OpenSSL"]
+multi_line_output = 3
+include_trailing_comma = true
+combine_as_imports = true
+skip_gitignore = true
+
