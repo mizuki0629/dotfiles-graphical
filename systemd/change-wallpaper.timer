@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer for change wallpaper
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=default.target
+

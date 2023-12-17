@@ -1,0 +1,6 @@
+[Unit]
+Description=Start XDG autostart apps
+Documentation=man:systemd.special(7)
+Wants=xdg-desktop-autostart.target
+RefuseManualStart=no
+StopWhenUnneeded=no
