@@ -25,7 +25,12 @@ def init():
                         Match(func=is_youtube_music),
                     ],
                 },
-                {"label": "4"},
+                {
+                    "label": "",
+                    "matches": [
+                        Match(wm_class="org.remmina.Remmina"),
+                    ],
+                },
                 {"label": "5"},
                 {"label": "6"},
                 {"label": "7"},
