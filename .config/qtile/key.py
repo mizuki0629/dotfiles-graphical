@@ -4,7 +4,7 @@ from libqtile.lazy import lazy
 
 
 def init(mod: str, groups: list[Group]) -> list[Key]:
-    terminal = "kitty"
+    terminal = "alacritty"
 
     keys = [
         Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
