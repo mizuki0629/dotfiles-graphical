@@ -1,9 +1,0 @@
-[Unit]
-Description=Change Wallpaper with bing-wallpaper
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/fish -c "bing-wallpaper --mkt ja-JP --resolution 3840 -o '%h/Pictures/wallpapers/bing-wallpaper.jpg'"
-
-[Install]
-WantedBy=change-wallpaper.timer
