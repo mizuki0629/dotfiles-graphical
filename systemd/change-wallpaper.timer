@@ -6,5 +6,5 @@ OnCalendar=daily
 Persistent=true
 
 [Install]
-WantedBy=default.target
+WantedBy=timers.target
 

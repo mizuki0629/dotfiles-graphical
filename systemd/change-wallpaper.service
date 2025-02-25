@@ -1,6 +1,11 @@
 [Unit]
 Description=Change Wallpaper with bing-wallpaper
+#After=graphical.target
+#Requires=graphical.target
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/fish -c "bing-wallpaper --mkt ja-JP --resolution 3840 -o '%h/Pictures/wallpapers/bing-wallpaper.jpg' && feh --bg-fill '%h/Pictures/wallpapers/bing-wallpaper.jpg'"
+
+#[Install]
+#WantedBy=graphical.target
