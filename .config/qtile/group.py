@@ -32,10 +32,6 @@ def init():
                     ],
                 },
                 {"label": "5"},
-                {"label": "6"},
-                {"label": "7"},
-                {"label": "8"},
-                {"label": "9"},
             ],
             start=1,
         )

@@ -18,7 +18,7 @@ try:
         return [
             BorderDecoration(
                 colour=color,
-                border_width=[0, 0, 2, 0],
+                border_width=[0, 0, 3, 0],
             )
         ]
 
@@ -30,7 +30,7 @@ except ImportError:
 
 def __cpu(color: str):  # type: ignore
     return widget.CPU(  # type: ignore
-        format=" Cpu: {load_percent:>3.0f}%",
+        format=" Cpu:{load_percent:>3.0f}%",
         foreground=color,
         decorations=decorations_border(color),
         mouse_callbacks={"Button1": util.cmd_spawn("htop")},
@@ -40,7 +40,7 @@ def __cpu(color: str):  # type: ignore
 def __memory(color: str):  # type: ignore
     return widget.Memory(  # type: ignore
         format="{MemUsed: .1f}{mm}/{MemTotal: .1f}{mm}",
-        fmt="󰍛 Mem: {}",
+        fmt="󰍛 Mem:{}",
         measure_mem="G",
         foreground=color,
         decorations=decorations_border(color),
@@ -67,6 +67,7 @@ def __net(color: str):  # type: ignore
         foreground=color,
         prefix="M",
         use_bits=True,
+        # format="{down:3.0f}{down_suffix} ↓↑ {up:3.0f}{up_suffix}",
         fmt="󰒍 {}",
         decorations=decorations_border(color),
     )
@@ -95,8 +96,7 @@ def __groupbox(**opts):  # type: ignore
         padding_x=5,
         borderwidth=3,
         active=colors.foreground,
-        inactive=colors.magenta,
-        rounded=False,
+        inactive=colors.nord10,
         highlight_method="line",
         this_current_screen_border=colors.cyan,
         this_screen_border=colors.green,
@@ -110,7 +110,7 @@ def __windowname(color: str, **opts):  # type: ignore
     return widget.WindowName(  # type: ignore
         foreground=color,
         padding=5,
-        max_chars=40,
+        # max_chars=40,
         **opts,
     )
 
@@ -126,7 +126,7 @@ def __currentlayouticon(color: str, **opts):  # type: ignore
     return widget.CurrentLayoutIcon(  # type: ignore
         custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
         use_mask=True,
-        scale=0.9,
+        scale=0.7,
         foreground=color,
         **opts,
     )
@@ -140,46 +140,54 @@ def __prompt(color: str, **opts):  # type: ignore
     )
 
 
+def __checkupdates():  # type: ignore
+    return widget.CheckUpdates(  # type: ignore
+        custom_command="apt list --upgradable",
+        custom_command_modify=(lambda x: x - 1),
+        colour_have_updates=colors.nord11,
+        colour_no_updates=colors.nord10,
+        # distro="Ubuntu",
+        no_update_string="No updates",
+    )
+
+
 def init_bar():
-    spacer = widget.Spacer(length=8)  # type: ignore
+    spacer = widget.Spacer(length=10)  # type: ignore
 
     return bar.Bar(
         [
-            __groupbox(),
             spacer,
             __currentlayouticon(colors.foreground),
             spacer,
-            __currentlayout(colors.foreground),
+            __groupbox(),
             spacer,
             __prompt(colors.foreground),
             spacer,
-            __windowname(colors.blue),
-            __wallpaper(colors.foreground),
+            __windowname(colors.foreground),
+            __checkupdates(),
             spacer,
-            widget.Clock(  # type: ignore
-                format="󰥔 %Y-%m-%d(%a) %H:%M",
-            ),
+            widget.Systray(padding=10),  # type: ignore
             spacer,
-            __cpu(colors.magenta),
+            __cpu(colors.yellow),
             spacer,
             __memory(colors.green),
             spacer,
-            __disk(colors.blue),
+            __net(colors.cyan),
             spacer,
-            __net(colors.yellow),
+            widget.Clock(  # type: ignore
+                format="%m/%d(%a) %H:%M",
+                decorations=decorations_border(colors.foreground),
+            ),
             spacer,
-            widget.Systray(padding=3),  # type: ignore
-            spacer,
-            __quickexit(colors.red),
         ],
-        24,
+        30,
     )
 
 
 def defaults():
     return {
-        "font": "HackGen Console NF",
-        "fontsize": 20,
+        "font": "ComicCode Nerd Font",
+        "fontsize": 19,
         "padding": 0,
         "foreground": colors.foreground,
         "background": colors.background,

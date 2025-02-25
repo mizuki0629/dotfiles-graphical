@@ -11,9 +11,9 @@ import colors
 
 def init() -> list[Layout]:
     layout_theme = {
-        "border_width": 8,
-        "margin": 12,
-        "border_focus": colors.magenta,
+        "border_width": 4,
+        "margin": 4,
+        "border_focus": colors.cyan,
         "border_normal": colors.nord3,
     }
     return [
