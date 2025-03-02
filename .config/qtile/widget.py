@@ -142,11 +142,11 @@ def __prompt(color: str, **opts):  # type: ignore
 
 def __checkupdates():  # type: ignore
     return widget.CheckUpdates(  # type: ignore
-        custom_command="apt list --upgradable",
-        custom_command_modify=(lambda x: x - 1),
+        # custom_command="apt list --upgradable",
+        # custom_command_modify=(lambda x: x - 1),
         colour_have_updates=colors.nord11,
         colour_no_updates=colors.nord10,
-        # distro="Ubuntu",
+        distro="Arch",
         no_update_string="No updates",
     )
 
@@ -172,6 +172,8 @@ def init_bar():
             spacer,
             __memory(colors.green),
             spacer,
+            __disk(colors.blue),
+            spacer,
             __net(colors.cyan),
             spacer,
             widget.Clock(  # type: ignore
@@ -179,6 +181,7 @@ def init_bar():
                 decorations=decorations_border(colors.foreground),
             ),
             spacer,
+            __quickexit(colors.foreground),
         ],
         30,
     )
