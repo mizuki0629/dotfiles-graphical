@@ -76,7 +76,8 @@ def __net(color: str):  # type: ignore
 def __quickexit(color: str):  # type: ignore
     return widget.QuickExit(  # type: ignore
         foreground=color,
-        # default_text = '[X]',
+        default_text="[X]",
+        countdown_format="[{}]",
         decorations=decorations_border(color),
     )
 
@@ -181,7 +182,7 @@ def init_bar():
                 decorations=decorations_border(colors.foreground),
             ),
             spacer,
-            __quickexit(colors.foreground),
+            __quickexit(colors.red),
         ],
         30,
     )
