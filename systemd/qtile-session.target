@@ -1,0 +1,12 @@
+[Unit]
+Description=Qtile graphical session
+
+Wants=graphical-session.target
+BindsTo=graphical-session.target
+After=graphical-session.target
+
+Wants=xdg-desktop-autostart.target
+After=xdg-desktop-autostart.target
+
+[Install]
+WantedBy=default.target

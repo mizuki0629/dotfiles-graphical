@@ -1,3 +1,5 @@
 #! /bin/sh
 feh --bg-fill ~/Pictures/wallpapers/bing-wallpaper.jpg
-systemctl --user start autostart.target
+#systemctl --user start autostart.target
+
+systemctl --user start qtile-session.target
